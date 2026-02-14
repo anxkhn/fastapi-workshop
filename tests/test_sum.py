@@ -9,8 +9,8 @@ client = TestClient(app)
 
 def test_sum_positive_numbers():
     response = client.get("/sum?a=2&b=3")
-    response.json()
-
+    assert response.status_code == 200
+    assert response.json() == {"result": 5}
 
 def test_sum_negative_numbers():
     response = client.get("/sum?a=-1&b=-4")
