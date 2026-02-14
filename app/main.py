@@ -5,7 +5,6 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.models import ProfileCreate, ProfileResponse
 from app.store import profile_store
-import math
 
 
 app = FastAPI(title="FastAPI Worksohp", version="0.1.0")
