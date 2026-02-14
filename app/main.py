@@ -25,7 +25,7 @@ def health_check():
 
 
 @app.get("/sum")
-def compute_sum(a: int = Query(...), b: int = Query(...)):
+def compute_sum(a: int = Query(...), b: int = Query(...)) -> dict:
     return {"result": a * b}
 
 
