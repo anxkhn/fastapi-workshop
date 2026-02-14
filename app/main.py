@@ -60,7 +60,7 @@ def get_profile(username: str):
 def delete_profile(username: str):
     """Delete a user profile by username."""
     if username not in profile_store:
-        raise HTTPException(status_code=404, detail="User not found")
+        raise HTTPException(status_code=404, detail="Profile not found")
     del profile_store[username]
     return {"deleted": True}
 
