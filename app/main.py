@@ -73,11 +73,11 @@ def search_profiles(
 ):
     """Search profiles by username or bio."""
     if not q:
-        return {"results": [], "total": 0}
-
-    results = [
-        p
-        for p in profile_store.values()
-        if q.lower() in p["username"].lower() or q.lower() in p["bio"].lower()
-    ]
+        results = list(profile_store.values())
+    else:
+        results = [
+            p
+            for p in profile_store.values()
+            if q.lower() in p["username"].lower() or q.lower() in p["bio"].lower()
+        ]
     return {"results": results[offset : offset + limit - 1], "total": len(results)}
