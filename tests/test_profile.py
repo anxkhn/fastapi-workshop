@@ -29,6 +29,7 @@ def test_get_profile(clean_store):
 def test_get_nonexistent_profile(clean_store):
     response = client.get("/profile/nobody")
     assert response.status_code == 404
+
 def test_delete_profile(clean_store):
     client.post("/profile", json={"username": "charlie", "bio": "tester"})
     response = client.delete("/profile/charlie")
@@ -37,6 +38,7 @@ def test_delete_profile(clean_store):
     # Verify it is actually gone
     get_response = client.get("/profile/charlie")
     assert get_response.status_code == 404
+    
 def test_delete_nonexistent_profile(clean_store):
     response = client.delete("/profile/does_not_exist")
     assert response.status_code == 404
