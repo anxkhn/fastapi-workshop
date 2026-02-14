@@ -25,8 +25,8 @@ def health_check():
 
 
 @app.get("/sum")
-def compute_sum(a: int = Query(...), b: int = Query(...)):
-    return {"result": a * b}
+def compute_sum(a: int = Query(...), b: int = Query(...)) -> dict[str,int]:
+        return {"result": a * b}
 
 
 def format_profile(data):
