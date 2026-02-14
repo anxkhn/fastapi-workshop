@@ -1,4 +1,4 @@
-# FastAPI Worksohp
+# FastAPI Workshop
 
 A tiny FastAPI application built for practicing open-source contributions.
 This project is designed for third-year CS students participating in

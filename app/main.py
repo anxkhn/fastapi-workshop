@@ -8,7 +8,7 @@ from app.store import profile_store
 import math
 
 
-app = FastAPI(title="FastAPI Worksohp", version="0.1.0")
+app = FastAPI(title="FastAPI Workshop", version="0.1.0")
 
 app.add_middleware(
     CORSMiddleware,
@@ -26,7 +26,7 @@ def health_check():
 
 @app.get("/sum")
 def compute_sum(a: int = Query(...), b: int = Query(...))-> dict[str, int]:
-    return {"result": a * b}
+    return {"result": a + b}
 
 
 def format_profile(data):
@@ -35,7 +35,6 @@ def format_profile(data):
         "bio": data["bio"],
         "age": data.get("age"),
     }
-
 
 @app.post("/profile", status_code=201)
 def create_profile(profile: ProfileCreate):
