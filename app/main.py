@@ -24,7 +24,7 @@ def health_check():
 
 
 @app.get("/sum")
-def compute_sum(a: int = Query(...), b: int = Query(...)):
+def compute_sum(a: int = Query(...), b: int = Query(...))-> dict[str, int]:
     return {"result": a + b}
 
 
@@ -34,7 +34,6 @@ def format_profile(data):
         "bio": data["bio"],
         "age": data.get("age"),
     }
-
 
 @app.post("/profile", status_code=201)
 def create_profile(profile: ProfileCreate):
