@@ -41,6 +41,12 @@ uvicorn app.main:app --reload
 | DELETE | `/profile/{username}` | Delete a profile         |
 | GET    | `/search?q=term`      | Search profiles          |
 
+## CORS
+
+This application uses CORS middleware that allows requests, HTTP methods, and headers from all origins. This is configured in `app/main.py`, starting line 12. This is acceptable practice for development, but you are heavily advised to restrict the allowed origins to your frontend domain(s) in production since leaving it unrestricted poses large security risks.
+
+For example: `allow_origins=["*"]` --> `allow_origins=["https://yourfrontend.com"]`.
+
 ## Running Tests
 
 ```bash
