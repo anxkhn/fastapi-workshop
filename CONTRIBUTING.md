@@ -19,7 +19,7 @@ beginners, so do not hesitate to ask questions by opening an issue.
    ```
 4. Run the **tests** to make sure everything works:
    ```bash
-   pytest test/ -v
+   pytest tests/ -v
    ```
 
 ## Making Changes
@@ -31,7 +31,7 @@ beginners, so do not hesitate to ask questions by opening an issue.
 2. Make your changes. Keep commits small and focused.
 3. Run the tests again to verify nothing is broken:
    ```bash
-   pytest test/ -v
+   pytest tests/ -v
    ```
 4. **Commit** with a clear message:
    ```bash

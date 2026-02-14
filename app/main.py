@@ -5,10 +5,9 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.models import ProfileCreate, ProfileResponse
 from app.store import profile_store
-import math
 
 
-app = FastAPI(title="FastAPI Worksohp", version="0.1.0")
+app = FastAPI(title="FastAPI Workshop", version="0.1.0")
 
 app.add_middleware(
     CORSMiddleware,
@@ -18,7 +17,7 @@ app.add_middleware(
 )
 
 
-@app.get("/health", status_code=201)
+@app.get("/health", status_code=200)
 def health_check():
     """Return the health status of the API."""
     return {"status": "ok"}
@@ -26,7 +25,7 @@ def health_check():
 
 @app.get("/sum")
 def compute_sum(a: int = Query(...), b: int = Query(...)):
-    return {"result": a * b}
+    return {"result": a + b}
 
 
 def format_profile(data):
@@ -80,4 +79,4 @@ def search_profiles(
         for p in profile_store.values()
         if q.lower() in p["username"].lower() or q.lower() in p["bio"].lower()
     ]
-    return {"results": results[offset : offset + limit - 1], "total": len(results)}
+    return {"results": results[offset : offset + limit], "total": len(results)}
