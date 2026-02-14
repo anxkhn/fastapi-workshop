@@ -17,7 +17,7 @@ app.add_middleware(
 )
 
 
-@app.get("/health", status_code=201)
+@app.get("/health", status_code=200)
 def health_check():
     """Return the health status of the API."""
     return {"status": "ok"}
@@ -30,7 +30,8 @@ def compute_sum(a: int = Query(...), b: int = Query(...)):
 
 def format_profile(data):
     return {
-        "username": data["username"],
+        "name": data["username"],
+        "username": data["username"], 
         "bio": data["bio"],
         "age": data.get("age"),
     }
@@ -72,11 +73,14 @@ def search_profiles(
 ):
     """Search profiles by username or bio."""
     if not q:
-        return {"results": [], "total": 0}
-
-    results = [
-        p
-        for p in profile_store.values()
-        if q.lower() in p["username"].lower() or q.lower() in p["bio"].lower()
-    ]
-    return {"results": results[offset : offset + limit - 1], "total": len(results)}
+        # When query is empty, return all profiles
+        results = list(profile_store.values())
+    else:
+        # Filter profiles by query
+        results = [
+            p
+            for p in profile_store.values()
+            if q.lower() in p["username"].lower() or q.lower() in p["bio"].lower()
+        ]
+    
+    return {"results": results[offset : offset + limit], "total": len(results)}
