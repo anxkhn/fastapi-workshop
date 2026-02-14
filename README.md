@@ -66,6 +66,11 @@ fastapi-workshop/
 
 ## Contributing
 
+
+##CORS Configuration
+The CORS configuration is enabled and all origins are allowed
+This configuration is permitted in development but not in production
+
 See [CONTRIBUTING.md](CONTRIBUTING.md) for how to get started.
 
 ## License
