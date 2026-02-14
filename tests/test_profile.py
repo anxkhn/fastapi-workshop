@@ -37,3 +37,6 @@ def test_delete_profile(clean_store):
     # Verify it is actually gone
     get_response = client.get("/profile/charlie")
     assert get_response.status_code == 404
+def test_delete_nonexistent_profile(clean_store):
+    response = client.delete("/profile/does_not_exist")
+    assert response.status_code == 404
