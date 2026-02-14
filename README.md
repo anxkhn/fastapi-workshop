@@ -41,6 +41,23 @@ uvicorn app.main:app --reload
 | DELETE | `/profile/{username}` | Delete a profile         |
 | GET    | `/search?q=term`      | Search profiles          |
 
+## CORS Configuration
+
+This API has CORS (Cross-Origin Resource Sharing) enabled with permissive
+defaults for development:
+
+```python
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],      # Allow all origins
+    allow_methods=["*"],      # Allow all HTTP methods
+    allow_headers=["*"],      # Allow all headers
+)
+```
+
+> **Note:** The `allow_origins=["*"]` setting is suitable for development.
+> For production, replace `"*"` with specific allowed origins.
+
 ## Running Tests
 
 ```bash
