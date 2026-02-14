@@ -67,9 +67,11 @@ fastapi-workshop/
 ## Contributing
 
 
-##CORS Configuration
-The CORS configuration is enabled and all origins are allowed
-This configuration is permitted in development but not in production
+## CORS
+
+The application includes CORS middleware that allows requests from all origins.
+This is configured in `app/main.py`. For production deployments, restrict
+`allow_origins` to your specific frontend domain(s).
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for how to get started.
 
