@@ -66,6 +66,13 @@ fastapi-workshop/
 
 ## Contributing
 
+
+## CORS
+
+The application includes CORS middleware that allows requests from all origins.
+This is configured in `app/main.py`. For production deployments, restrict
+`allow_origins` to your specific frontend domain(s).
+
 See [CONTRIBUTING.md](CONTRIBUTING.md) for how to get started.
 
 ## License
