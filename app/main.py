@@ -17,7 +17,7 @@ app.add_middleware(
 )
 
 
-@app.get("/health", status_code=201)
+@app.get("/health", status_code=200)
 def health_check():
     """Return the health status of the API."""
     return {"status": "ok"}
