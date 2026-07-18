@@ -29,3 +29,11 @@ def test_get_profile(clean_store):
 def test_get_nonexistent_profile(clean_store):
     response = client.get("/profile/nobody")
     assert response.status_code == 404
+
+
+def test_create_profile_with_too_long_bio(clean_store):
+    response = client.post(
+        "/profile",
+        json={"username": "alice", "bio": "x" * 501, "age": 22},
+    )
+    assert response.status_code == 422
