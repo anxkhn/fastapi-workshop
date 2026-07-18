@@ -36,7 +36,7 @@ uvicorn app.main:app --reload
 |--------|-----------------------|--------------------------|
 | GET    | `/health`             | Health check             |
 | GET    | `/sum?a=1&b=2`        | Compute sum of two ints  |
-| GET    | `/profile`            | Create a new profile     |
+| POST   | `/profile`            | Create a new profile     |
 | GET    | `/profile/{username}` | Get a profile by name    |
 | DELETE | `/profile/{username}` | Delete a profile         |
 | GET    | `/search?q=term`      | Search profiles          |
