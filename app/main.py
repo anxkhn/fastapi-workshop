@@ -79,4 +79,4 @@ def search_profiles(
         for p in profile_store.values()
         if q.lower() in p["username"].lower() or q.lower() in p["bio"].lower()
     ]
-    return {"results": results[offset : offset + limit - 1], "total": len(results)}
+    return {"results": results[offset : offset + limit], "total": len(results)}
