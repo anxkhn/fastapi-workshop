@@ -1,4 +1,4 @@
-"""Workshop API - a tiny FastAPI application for open-source contribution practice."""
+
 
 from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
@@ -17,7 +17,7 @@ app.add_middleware(
 )
 
 
-@app.get("/health", status_code=201)
+@app.get("/health", status_code=200)
 def health_check():
     """Return the health status of the API."""
     return {"status": "ok"}
@@ -25,10 +25,12 @@ def health_check():
 
 @app.get("/sum")
 def compute_sum(a: int = Query(...), b: int = Query(...)):
+    """Return the sum of two integers."""
     return {"result": a + b}
 
 
 def format_profile(data):
+    """Format a profile for the API response."""
     return {
         "username": data["username"],
         "bio": data["bio"],
@@ -72,11 +74,16 @@ def search_profiles(
 ):
     """Search profiles by username or bio."""
     if not q:
-        return {"results": [], "total": 0}
+        results = list(profile_store.values())
+    else:
+        results = [
+            profile
+            for profile in profile_store.values()
+            if q.lower() in profile["username"].lower()
+            or q.lower() in profile["bio"].lower()
+        ]
 
-    results = [
-        p
-        for p in profile_store.values()
-        if q.lower() in p["username"].lower() or q.lower() in p["bio"].lower()
-    ]
-    return {"results": results[offset : offset + limit - 1], "total": len(results)}
+    return {
+        "results": results[offset:offset + limit],
+        "total": len(results),
+    }
