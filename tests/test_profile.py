@@ -1,5 +1,6 @@
 """Tests for the /profile endpoints."""
 
+
 from fastapi.testclient import TestClient
 
 from app.main import app
@@ -13,8 +14,7 @@ def test_create_profile(clean_store):
         json={"username": "alice", "bio": "Backend developer", "age": 22},
     )
     assert response.status_code == 201
-    assert response.json()["name"] == "alice"
-
+    assert response.json()["username"] == "alice"
 
 def test_get_profile(clean_store):
     client.post(
